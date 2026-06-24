@@ -70,6 +70,19 @@ code {
   margin: 0 0 18px;
 }
 
+.app__nav-group {
+  margin-bottom: 16px;
+}
+
+.app__nav-group-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin: 0 0 6px;
+  padding: 0 4px;
+}
+
 .app__nav {
   display: flex;
   flex-direction: column;

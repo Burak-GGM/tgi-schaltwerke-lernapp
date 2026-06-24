@@ -8,11 +8,11 @@
 
 ## Why does this project exist?
 
-I'm a student at a German *Technisches Gymnasium* (a technical-track high school), in a class called **TGI** (Technische Informatik / Technical Computer Science). One unit of that class — **Schaltwerke** ("sequential switching circuits") — is about digital circuits that have *memory*: traffic lights, copy-machine counters, running-light displays, dimmer switches, and so on. The exam covers 8 textbook-style exercises built around this topic.
+I'm a student at a German *Technisches Gymnasium* (a technical-track high school), in a class called **TGI** (Technische Informatik / Technical Computer Science). One unit of that class — **Schaltwerke** ("sequential switching circuits") — is about digital circuits that have *memory*: traffic lights, copy-machine counters, running-light displays, dimmer switches, and so on. The exam covers 8 textbook-style exercises built around this topic, on top of the underlying theory (flip-flops, counters, shift registers, RAM/ROM).
 
 The problem: this material is normally taught through **static diagrams in a PDF** — a state diagram here, a table there, a timing diagram somewhere else — and you're expected to mentally connect all three and imagine how the circuit *behaves over time*. That's hard. It's easy to memorize the diagrams without ever really understanding what "the system moves from state Z2 to state Z3 when this button is pressed" actually *looks like* when it happens.
 
-So instead of just re-reading my notes, I built this: a small web app where every one of the 8 exam exercises is an actual **interactive simulation**. You press a button, and you watch the state diagram light up the new state, the matching row in the table highlight, the timing diagram add a new column, and the actual output (a traffic light, a row of lamps, an LED grid, a dimmer) react — all at once, all linked together. It turns "memorize this diagram" into "watch it happen, then predict it yourself."
+So instead of just re-reading my notes, I built this: a small web app that turns the whole unit — both the underlying theory and the 8 exam exercises — into actual **interactive simulations**. You press a button, and you watch the state diagram light up the new state, the matching row in the table highlight, the timing diagram add a new column, and the actual output (a traffic light, a row of lamps, an LED grid, a dimmer, a flip-flop) react — all at once, all linked together. It turns "memorize this diagram" into "watch it happen, then predict it yourself."
 
 It's not a professional product and it's not a generic circuit simulator — it's a personal exam-prep tool. I'm sharing the code publicly in case it's useful to:
 - other students with the same exam topic (the exercises follow a standard German *Abitur*/*Technisches Gymnasium* curriculum, so they may show up elsewhere too),
@@ -23,7 +23,20 @@ It's not a professional product and it's not a generic circuit simulator — it'
 
 A normal digital circuit (called a *Schaltnetz*) is like a calculator: same input, always the same output, no memory. A **Schaltwerk** is a digital circuit that *remembers* something — it has an internal "state," and what it does next depends on **both** the current input **and** what state it's already in. A traffic light is a perfect everyday example: pressing the pedestrian button doesn't *immediately* turn the light green — it depends on what color the light is *currently* showing. That "depends on history" behavior is the whole topic, and it's modeled formally with **state diagrams** (bubbles connected by arrows) and **state tables**. This app lets you click through exactly that, for 8 real exam-style circuits, instead of just reading about it.
 
-## What's in here (the 8 exercises)
+## What's in here
+
+### Fundamentals (the theory behind the exercises)
+
+| Page | What you see |
+|---|---|
+| Schaltnetz vs. Schaltwerk | A two-NOR-gate latch you click through step by step — proof, live, that the same input combination can produce a different output depending on what happened before |
+| Flip-Flops | One simulator, 7 tabs: level-controlled / clock-level / edge-triggered RS-FF, clock-level D-FF, edge-triggered JK-FF and T-FF, and a JK master-slave FF that visibly lags one clock behind |
+| State diagram & state table | The textbook's own non-technical example (a student's beer crate emptying on the way to a school party) turned into a clickable 7-state machine |
+| Counters (CTR) | A 2-/4-bit binary counter — toggle sync vs. async mode and watch the bits ripple with a visible delay instead of switching all at once; CLR (synchronous) vs. AR (asynchronous) reset; the bit rows double as a live frequency-divider demo |
+| Shift register (SRG) | A 4-bit shift register with Stop / shift-left / shift-right / parallel-load modes |
+| RAM & ROM | An 8×4 read-write memory (address, data, WR/OE/EN) plus an 8×4 read-only memory pre-loaded with a real stepper-motor half-step pattern |
+
+### The 8 exam exercises
 
 | # | Exercise | What you see |
 |---|---|---|
@@ -64,11 +77,13 @@ Exercise 8's timing-diagram question (2.1.2) is based on a scanned PDF page wher
 - **`src/engine/`** — a small, generic, data-driven state-machine core. Every exercise is *just a configuration object* (states, transitions, inputs, tables, which output widget to use) — no exercise-specific UI code.
 - **`src/components/`** — the reusable UI pieces every exercise shares: `StateDiagram` (SVG graph), `TruthTable`, `Controls` (Play/Pause/Step/Reset/Speed), `Waveform` (the generic timing-diagram panel), and `outputs/` (the traffic light, lamp row, LED grid, counter badge, ROM chip, generic boolean pills — picked per exercise via `outputRenderer`).
 - **`src/exercises/`** — the 8 exercises, each a `build(lang)` function (so all of an exercise's text exists in 3 languages, defined right next to the data it describes).
-- **`src/pages/`** — `ExercisePage` renders any state-machine exercise generically; `PwmPage` and the D-FF timing lab are bespoke pages because exercise 6 (PWM) and part of exercise 8 aren't classic state diagrams.
+- **`src/concepts/`** — Grundlagen content that fits the same state-machine engine (currently the beer-crate state-diagram example).
+- **`src/components/ff/`** — the generic Flip-Flop simulator (`FlipFlopLab`) and the 7 truth-table/behavior configs it's driven by.
+- **`src/pages/`** — `ExercisePage` renders any state-machine exercise generically; `PwmPage`, the D-FF timing lab, and the Grundlagen pages (`src/pages/concepts/`) are bespoke pages where the interaction doesn't fit a classic state diagram (PWM, counters, shift register, RAM/ROM, the NOR-latch intro).
 - **`src/i18n/`** — the language switcher, persisted in `localStorage`, and the translation dictionary for everything that isn't part of an exercise config.
 
 To add or edit an exercise: add a `build(lang): ExerciseConfig` function in `src/exercises/` (see `01-kopierer.ts` as a template), wire it into `src/exercises/index.ts` and `src/App.tsx`. No changes to the shared UI components are needed as long as one of the existing output types fits (`traffic-light`, `lamp-row-4`, `led-matrix-3x3`, `counter-badge`, `bool-pills`, `rom-table`).
 
 ## Source material
 
-Built from `BPE1 HW – Klasse 11 – Logik SN SW` (Robert-Bosch-Schule Ulm, TGI 11-2), covering the 8 textbook exercises: photocopier, traffic light, two running-light variants, ROM code converter, PWM, forest playground, and running bar/parking garage.
+Built from `BPE1 HW – Klasse 11 – Logik SN SW` (Robert-Bosch-Schule Ulm, TGI 11-2): the fundamentals chapter (Schaltnetz/Schaltwerk, flip-flops, state diagrams, counters, shift registers, RAM/ROM) plus the 8 textbook exercises — photocopier, traffic light, two running-light variants, ROM code converter, PWM, forest playground, and running bar/parking garage.

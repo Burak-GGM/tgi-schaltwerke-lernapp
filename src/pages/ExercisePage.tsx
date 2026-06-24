@@ -45,7 +45,9 @@ export function ExerciseView({
     <div className="exercise-page">
       <header className="exercise-page__header">
         <h2>
-          {t("exerciseWord", lang)} {config.number} — {config.title}
+          {config.category === "concept"
+            ? config.title
+            : `${t("exerciseWord", lang)} ${config.number} — ${config.title}`}
         </h2>
         {config.subtitle && <p className="exercise-page__subtitle">{config.subtitle}</p>}
         <p className="exercise-page__description">{config.description}</p>

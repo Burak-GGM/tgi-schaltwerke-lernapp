@@ -68,6 +68,8 @@ export interface ExerciseConfig {
   id: string;
   number: number;
   title: string;
+  /** "exercise" (default) shows "Aufgabe N — Title"; "concept" shows just the title (used by the Grundlagen section). */
+  category?: "exercise" | "concept";
   subtitle?: string;
   /** plain-text/markdown-ish description shown above the visualization */
   description: string;
