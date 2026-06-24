@@ -53,6 +53,8 @@ Jede Aufgabe zeigt dieselben vier verknüpften Ansichten: ein **Zustandsdiagramm
 
 Das ist bewusst **kein** Gate-Level-Schaltkreis-Simulator (keine AND/OR-Gatter-Verdrahtung). Es arbeitet auf derselben Abstraktionsebene, auf der der Unterricht stattfindet: Zustand ↔ Tabelle ↔ Zeitdiagramm ↔ Ausgabe.
 
+Die App startet auf einer **Startseite** mit Begrüßung, Sprachauswahl und einer klickbaren Karte für jede der Seiten oben. Die Navigation liegt sonst hinter einem **Hamburger-Menü** (oben links) — auf Smartphones/Tablets eine Overlay-Schublade, auf dem Desktop eine einklappbare Seitenleiste.
+
 ## Selbst ausprobieren
 
 ```bash

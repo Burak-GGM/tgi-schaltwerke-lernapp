@@ -53,6 +53,8 @@ Every exercise shows the same four linked views: a **state diagram**, a **state/
 
 This is deliberately **not** a gate-level circuit simulator (no AND/OR gate wiring). It works at the same abstraction level the class is taught at: state ↔ table ↔ timing ↔ output.
 
+The app opens on a **home page** with a greeting, a language picker, and a clickable card for every page above. Navigation otherwise lives behind a **hamburger menu** (top-left) — an overlay drawer on phones/tablets, a collapsible sidebar on desktop.
+
 ## Try it yourself
 
 ```bash

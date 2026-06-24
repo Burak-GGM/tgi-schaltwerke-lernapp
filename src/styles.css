@@ -45,29 +45,114 @@ code {
 .app {
   display: flex;
   min-height: 100vh;
+  position: relative;
 }
 
-.app__sidebar {
-  width: 250px;
+/* ---------- Drawer navigation (hamburger-triggered) ---------- */
+
+.app__drawer {
   flex-shrink: 0;
+  width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--panel);
-  border-right: 1px solid var(--panel-border);
-  padding: 20px 14px;
+  border-right: 1px solid transparent;
+  transition: width 0.2s ease, border-color 0.2s ease;
+}
+
+.app__drawer.is-open {
+  width: 280px;
+  border-right-color: var(--panel-border);
+}
+
+.app__drawer-inner {
+  width: 280px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.app__home-link {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  color: var(--text-dim);
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  margin-bottom: 14px;
+}
+
+.app__home-link:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.app__backdrop {
+  display: none;
+}
+
+.app__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__topbar {
   position: sticky;
   top: 0;
-  height: 100vh;
-  overflow-y: auto;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  background: rgba(15, 18, 22, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--panel-border);
 }
 
-.app__title {
-  font-size: 1.1rem;
-  margin: 0 0 2px;
+.app__hamburger {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
-.app__subtitle {
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  margin: 0 0 18px;
+.app__hamburger:hover {
+  border-color: var(--accent);
+}
+
+.app__hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 1px;
+}
+
+.app__topbar-title {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.app__topbar-title:hover {
+  color: var(--accent);
 }
 
 .app__nav-group {
@@ -129,6 +214,18 @@ code {
   color: var(--text);
   border-color: var(--accent);
   background: var(--accent-dim);
+}
+
+.lang-switcher--large {
+  max-width: 420px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.lang-switcher--large .lang-switcher__btn {
+  padding: 12px 10px;
+  font-size: 0.95rem;
+  border-radius: 10px;
 }
 
 .app__nav-item.is-active {
@@ -763,21 +860,164 @@ code {
   transition: width 0.3s linear;
 }
 
+/* ---------- Home page ---------- */
+
+.home {
+  max-width: 1100px;
+}
+
+.home__hero {
+  text-align: center;
+  max-width: 720px;
+  margin: 12px auto 40px;
+}
+
+.home__greeting {
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+}
+
+.home__title {
+  font-size: 1.7rem;
+  margin: 0 0 14px;
+  background: linear-gradient(90deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.home__pitch {
+  color: #cfd3d8;
+  line-height: 1.6;
+  margin: 0 0 26px;
+}
+
+.home__lang-label {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 0 0 10px;
+}
+
+.home__section {
+  margin-bottom: 36px;
+}
+
+.home__section-title {
+  font-size: 1.1rem;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.home-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.home-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.home-card__number {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.home-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.home-card__title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.home-card__subtitle {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.home__about {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 40px;
+}
+
+.home__about a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.home__about a:hover {
+  text-decoration: underline;
+}
+
 /* ---------- Responsive: phones + portrait tablets/iPads ---------- */
 
 @media (max-width: 880px) {
-  .app {
-    flex-direction: column;
-    min-height: auto;
+  .app__drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 70;
+    border-right: 1px solid var(--panel-border);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.4);
   }
 
-  .app__sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid var(--panel-border);
-    padding: 14px 16px;
+  .app__drawer.is-open {
+    width: 280px;
+    transform: translateX(0);
+  }
+
+  .app__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    border: none;
+    padding: 0;
+    z-index: 60;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .app__backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .app__nav {
@@ -797,6 +1037,14 @@ code {
   .app__main {
     padding: 16px 14px 40px;
     max-width: 100%;
+  }
+
+  .home-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home__title {
+    font-size: 1.4rem;
   }
 
   .exercise-page__grid {
@@ -829,8 +1077,8 @@ code {
 }
 
 @media (max-width: 480px) {
-  .app__title {
-    font-size: 1rem;
+  .app__topbar-title {
+    font-size: 0.95rem;
   }
 
   .exercise-page__description {

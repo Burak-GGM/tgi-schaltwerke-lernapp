@@ -4,6 +4,30 @@ All notable changes to this project are documented here, newest first. Dates and
 times are in `Europe/Berlin` time (CEST, UTC+2) and match the actual commit
 timestamps in git history (`git log`).
 
+## [0.4.0] — 2026-06-25 00:41 CEST
+
+### Added
+- New **home page**: a greeting, a short pitch explaining what the app is and
+  why it exists, a large language picker, and a clickable card for every
+  Grundlagen and Übungsaufgaben page so you can jump straight in without
+  using the nav. It's now the default view on load.
+- **Hamburger menu**: the sidebar is now a collapsible drawer toggled by a
+  hamburger button in a new top bar. On phones/tablets it defaults closed and
+  slides in as an overlay with a dimmed backdrop; on desktop it defaults open
+  and pushes the content (toggle it closed for a wider reading area). Picking
+  a page auto-closes the drawer on mobile.
+- A "Start" link at the top of the drawer and a clickable app title in the
+  top bar both return to the home page.
+
+### Changed
+- General visual polish: a gradient page title on the home page, card hover
+  states, a large variant of the language switcher for the home page.
+
+Verified via Playwright: all 14 pages reachable both via the drawer and via
+home-page cards, no horizontal overflow and no console errors across desktop,
+iPhone, iPad portrait, and small-phone viewports, correct rendering in all 3
+languages.
+
 ## [0.3.0] — 2026-06-25 00:18 CEST
 
 ### Added

@@ -30,6 +30,39 @@ const dict = {
 
   navGrundlagen: { de: "Grundlagen", tr: "Temel Bilgiler", en: "Fundamentals" },
   navUebungen: { de: "Übungsaufgaben", tr: "Alıştırmalar", en: "Exercises" },
+  navHome: { de: "Start", tr: "Ana Sayfa", en: "Home" },
+  navToggleAriaOpen: { de: "Navigation öffnen", tr: "Navigasyonu aç", en: "Open navigation" },
+  navToggleAriaClose: { de: "Navigation schließen", tr: "Navigasyonu kapat", en: "Close navigation" },
+
+  // ---- Home page ----
+  homeGreeting: { de: "Hallo! 👋", tr: "Merhaba! 👋", en: "Hello! 👋" },
+  homeTitle: {
+    de: "Willkommen bei der TGI Schaltwerke Lernapp",
+    tr: "TGI Schaltwerke Lernapp'a hoş geldin",
+    en: "Welcome to the TGI Schaltwerke study app",
+  },
+  homePitch: {
+    de: "Diese App verwandelt die Theorie und die 8 Klausuraufgaben rund um „Schaltwerke“ " +
+      "(sequenzielle Schaltungen mit Gedächtnis) in interaktive Simulationen, statt nur " +
+      "statische Diagramme in einem PDF zu zeigen. Wähle unten deine Sprache und steig ein — " +
+      "bei den Grundlagen oder direkt bei einer Übungsaufgabe.",
+    tr: "Bu uygulama, „Schaltwerke“ (hafızalı, ardışıl devreler) konusunun teorisini ve buna " +
+      "dayanan 8 sınav alıştırmasını, bir PDF'teki durağan diyagramlar göstermek yerine " +
+      "interaktif simülasyonlara dönüştürür. Aşağıdan dilini seç ve başla — temel bilgilerle " +
+      "veya doğrudan bir alıştırmayla.",
+    en: "This app turns the theory behind \"Schaltwerke\" (sequential circuits with memory) and " +
+      "the 8 exam exercises built on it into interactive simulations, instead of just showing " +
+      "static diagrams in a PDF. Pick your language below and dive in — with the fundamentals, " +
+      "or straight into an exercise.",
+  },
+  homeChooseLanguage: { de: "Sprache wählen", tr: "Dil seç", en: "Choose your language" },
+  homeSectionGrundlagen: { de: "Grundlagen", tr: "Temel Bilgiler", en: "Fundamentals" },
+  homeSectionUebungen: { de: "Übungsaufgaben", tr: "Alıştırmalar", en: "Exercises" },
+  homeAbout: {
+    de: "Gebaut von einem Schüler, um für seine eigene Klausur zu lernen — mehr dazu im README auf GitHub.",
+    tr: "Bir öğrenci tarafından kendi sınavına çalışmak için yapıldı — daha fazlası için GitHub'daki README'ye bak.",
+    en: "Built by a student to study for his own exam — see the README on GitHub for the full story.",
+  },
 
   // ---- PWM page (Aufgabe 6) ----
   pwmHeading: { de: "Aufgabe 6 — Pulsweitenmodulation", tr: "Görev 6 — Darbe Genişlik Modülasyonu", en: "Exercise 6 — Pulse-Width Modulation" },
