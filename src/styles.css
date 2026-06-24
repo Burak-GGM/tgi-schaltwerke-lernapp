@@ -17,14 +17,20 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 button {
   font-family: inherit;
+  touch-action: manipulation;
 }
 
 code {
@@ -79,6 +85,7 @@ code {
   border: 1px solid transparent;
   color: var(--text);
   padding: 9px 10px;
+  min-height: 40px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.88rem;
@@ -130,6 +137,7 @@ code {
 
 .app__main {
   flex: 1;
+  min-width: 0;
   padding: 28px 32px 60px;
   max-width: 1200px;
 }
@@ -163,6 +171,7 @@ code {
   border: 1px solid var(--panel-border);
   border-radius: 12px;
   padding: 16px 18px;
+  min-width: 0;
 }
 
 .panel h3 {
@@ -219,8 +228,14 @@ code {
 
 /* ---------- State diagram (SVG) ---------- */
 
+.state-diagram__scroll {
+  overflow-x: auto;
+}
+
 .state-diagram {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 .state-node {
@@ -260,6 +275,10 @@ code {
 }
 
 /* ---------- Truth table ---------- */
+
+.truth-table__scroll {
+  overflow-x: auto;
+}
 
 .truth-table table {
   width: 100%;
@@ -308,7 +327,8 @@ code {
   background: #232934;
   border: 1px solid #3a4150;
   color: var(--text);
-  padding: 7px 13px;
+  padding: 9px 14px;
+  min-height: 40px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.85rem;
@@ -728,4 +748,85 @@ code {
   height: 100%;
   background: var(--red);
   transition: width 0.3s linear;
+}
+
+/* ---------- Responsive: phones + portrait tablets/iPads ---------- */
+
+@media (max-width: 880px) {
+  .app {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .app__sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--panel-border);
+    padding: 14px 16px;
+  }
+
+  .app__nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .app__nav-item {
+    flex: 0 0 auto;
+  }
+
+  .lang-switcher {
+    margin-bottom: 12px;
+    max-width: 320px;
+  }
+
+  .app__main {
+    padding: 16px 14px 40px;
+    max-width: 100%;
+  }
+
+  .exercise-page__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  .rom-chip,
+  .brightness,
+  .pwm-register,
+  .pwm-counter,
+  .controls__transport,
+  .controls__speed {
+    flex-wrap: wrap;
+  }
+
+  .pwm-register__track,
+  .pwm-counter__track,
+  .brightness__track {
+    flex-basis: 100%;
+  }
+
+  .counter-badge__number {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app__title {
+    font-size: 1rem;
+  }
+
+  .exercise-page__description {
+    font-size: 0.92rem;
+  }
+
+  .traffic-light,
+  .led-matrix {
+    transform: scale(0.92);
+    transform-origin: top left;
+  }
 }

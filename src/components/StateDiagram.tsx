@@ -60,54 +60,60 @@ export function StateDiagram({ config, currentStateId }: Props) {
   }, [config.transitions]);
 
   return (
-    <svg
-      className="state-diagram"
-      viewBox={`0 0 ${width} ${height}`}
-      width="100%"
-      height={height}
-      role="img"
-      aria-label="Zustandsdiagramm"
-    >
-      <defs>
-        <marker id="arrowhead" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
-          <path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)" />
-        </marker>
-      </defs>
-      {edgeGroups.map((edge, idx) => (
-        <Edge
-          key={idx}
-          from={positions[edge.from]}
-          to={positions[edge.to]}
-          label={edge.labels.join(" / ")}
-          isSelfLoop={edge.from === edge.to}
-          skip={
-            config.layout === "linear" &&
-            Math.abs(order.indexOf(edge.to) - order.indexOf(edge.from)) > 1
-          }
-        />
-      ))}
-      {order.map((id) => {
-        const state = config.states.find((s) => s.id === id)!;
-        const pos = positions[id];
-        const active = id === currentStateId;
-        return (
-          <g key={id} transform={`translate(${pos.x},${pos.y})`}>
-            <circle
-              r={NODE_R}
-              className={active ? "state-node state-node--active" : "state-node"}
-            />
-            <text className="state-node__label" y={-4} textAnchor="middle">
-              {state.label}
-            </text>
-            {state.code && (
-              <text className="state-node__code" y={14} textAnchor="middle">
-                {state.code}
+    <div className="state-diagram__scroll">
+      <svg
+        className="state-diagram"
+        viewBox={`0 0 ${width} ${height}`}
+        width="100%"
+        // Linear layouts (skip-arcs, multiple nodes in a row) need a width floor to
+        // stay legible, so they scroll horizontally on narrow screens instead of
+        // shrinking. Circular ring layouts shrink to fit instead — seeing the whole
+        // ring at once matters more there than keeping labels at full size.
+        style={config.layout === "linear" ? { minWidth: width } : undefined}
+        role="img"
+        aria-label="Zustandsdiagramm"
+      >
+        <defs>
+          <marker id="arrowhead" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)" />
+          </marker>
+        </defs>
+        {edgeGroups.map((edge, idx) => (
+          <Edge
+            key={idx}
+            from={positions[edge.from]}
+            to={positions[edge.to]}
+            label={edge.labels.join(" / ")}
+            isSelfLoop={edge.from === edge.to}
+            skip={
+              config.layout === "linear" &&
+              Math.abs(order.indexOf(edge.to) - order.indexOf(edge.from)) > 1
+            }
+          />
+        ))}
+        {order.map((id) => {
+          const state = config.states.find((s) => s.id === id)!;
+          const pos = positions[id];
+          const active = id === currentStateId;
+          return (
+            <g key={id} transform={`translate(${pos.x},${pos.y})`}>
+              <circle
+                r={NODE_R}
+                className={active ? "state-node state-node--active" : "state-node"}
+              />
+              <text className="state-node__label" y={-4} textAnchor="middle">
+                {state.label}
               </text>
-            )}
-          </g>
-        );
-      })}
-    </svg>
+              {state.code && (
+                <text className="state-node__code" y={14} textAnchor="middle">
+                  {state.code}
+                </text>
+              )}
+            </g>
+          );
+        })}
+      </svg>
+    </div>
   );
 }
 
