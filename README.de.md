@@ -85,6 +85,10 @@ Die Zeitdiagramm-Frage in Aufgabe 8 (2.1.2) basiert auf einer gescannten PDF-Sei
 
 Um eine Aufgabe hinzuzufügen/zu ändern: eine `build(lang): ExerciseConfig`-Funktion in `src/exercises/` anlegen (siehe `01-kopierer.ts` als Vorlage), in `src/exercises/index.ts` und `src/App.tsx` einbinden. Die gemeinsamen UI-Komponenten müssen dafür nicht angefasst werden, solange einer der bestehenden Ausgabe-Typen passt (`traffic-light`, `lamp-row-4`, `led-matrix-3x3`, `counter-badge`, `bool-pills`, `rom-table`).
 
+## Änderungsprotokoll
+
+Siehe **[CHANGELOG.md](CHANGELOG.md)** dafür, was sich wann (Datum + Uhrzeit) und in welcher Version geändert hat.
+
 ## Quellmaterial
 
 Gebaut auf Basis von `BPE1 HW – Klasse 11 – Logik SN SW` (Robert-Bosch-Schule Ulm, TGI 11-2): das Grundlagenkapitel (Schaltnetz/Schaltwerk, Flip-Flops, Zustandsdiagramme, Zähler, Schieberegister, RAM/ROM) plus die 8 Übungsaufgaben — Kopierer, Ampelschaltung, zwei Lauflicht-Varianten, ROM-Codewandler, PWM, Waldabenteuerspielplatz und Laufbalken/Parkhaus.

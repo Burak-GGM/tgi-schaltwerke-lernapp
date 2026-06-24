@@ -84,6 +84,10 @@ Exercise 8's timing-diagram question (2.1.2) is based on a scanned PDF page wher
 
 To add or edit an exercise: add a `build(lang): ExerciseConfig` function in `src/exercises/` (see `01-kopierer.ts` as a template), wire it into `src/exercises/index.ts` and `src/App.tsx`. No changes to the shared UI components are needed as long as one of the existing output types fits (`traffic-light`, `lamp-row-4`, `led-matrix-3x3`, `counter-badge`, `bool-pills`, `rom-table`).
 
+## Changelog
+
+See **[CHANGELOG.md](CHANGELOG.md)** for what changed, when (date + time), and in which version.
+
 ## Source material
 
 Built from `BPE1 HW – Klasse 11 – Logik SN SW` (Robert-Bosch-Schule Ulm, TGI 11-2): the fundamentals chapter (Schaltnetz/Schaltwerk, flip-flops, state diagrams, counters, shift registers, RAM/ROM) plus the 8 textbook exercises — photocopier, traffic light, two running-light variants, ROM code converter, PWM, forest playground, and running bar/parking garage.
