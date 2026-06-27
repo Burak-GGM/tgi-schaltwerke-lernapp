@@ -4,6 +4,27 @@ All notable changes to this project are documented here, newest first. Dates and
 times are in `Europe/Berlin` time (CEST, UTC+2) and match the actual commit
 timestamps in git history (`git log`).
 
+## [0.5.0] — 2026-06-27 CEST
+
+### Added
+- New **Addierer** Grundlagen page (suggested by a classmate): explains binary
+  addition from scratch in three interactive stages, then lets you experiment
+  with a live 4-bit adder:
+  - **XOR gate** — toggle A and B, watch the truth-table row highlight and the
+    output bit update in real time. Explains why "exclusive-or" is the right
+    primitive for adding two bits.
+  - **Half adder (HA)** — A + B → S (XOR) + Cout (AND). Interactive with a
+    live 4-row truth table; explains why 1+1 = 10₂ and what the "carry" bit
+    means.
+  - **Full adder (FA)** — adds a third input Cin so stages can be chained.
+    Interactive 8-row truth table; shows the formulas S = A # B # Cin and
+    Cout = A&B + Cin&(A#B).
+  - **4-bit ripple-carry adder** — four full adders in a row. Click any of the
+    8 input bits (A3–A0, B3–B0); the carry chain C0–C4 updates live, colored
+    to show which stages are propagating a carry; decimal values displayed
+    alongside binary; overflow highlighted when the 4-bit result wraps.
+  Ships in DE/TR/EN like all other pages.
+
 ## [0.4.1] — 2026-06-27 CEST
 
 ### Fixed

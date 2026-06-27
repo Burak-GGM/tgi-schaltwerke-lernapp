@@ -503,6 +503,125 @@ const dict = {
   memOutputTristate: { de: "Z (hochohmig / Tri-State)", tr: "Z (yüksek empedans / Tri-State)", en: "Z (high-impedance / tri-state)" },
   memArrayHeading: { de: "Speicherarray", tr: "Bellek Dizisi", en: "Memory Array" },
 
+  // ---- Addierer (Grundlagen) ----
+  addHeading: { de: "Addierer", tr: "Toplayıcı", en: "Adders" },
+  addSubtitle: {
+    de: "Von XOR bis 4-Bit-Addierer",
+    tr: "XOR'dan 4-Bit Toplayıcıya",
+    en: "From XOR to 4-bit adder",
+  },
+  addIntro: {
+    de:
+      "Digitale Schaltungen rechnen intern immer im Binärsystem — auch ganz normale Additionen. " +
+      "Diese Seite erklärt Schritt für Schritt, wie man aus einfachen Gattern zuerst einen " +
+      "1-Bit-Addierer und dann einen 4-Bit-Addierer baut — und was passiert, wenn der Übertrag " +
+      "von Stelle zu Stelle 'durchrippt'.",
+    tr:
+      "Dijital devreler dahili olarak her zaman ikili sistemde hesap yapar — normal toplamalar da dahil. " +
+      "Bu sayfa adım adım açıklar: Basit kapılardan önce 1-bit toplayıcı, sonra 4-bit toplayıcı nasıl " +
+      "inşa edilir — ve elde basamaktan basamağa 'dalgalandığında' ne olur.",
+    en:
+      "Digital circuits always compute internally in binary — even ordinary additions. This page " +
+      "explains step by step how to build a 1-bit adder and then a 4-bit adder from simple gates — " +
+      "and what happens when the carry 'ripples' from one bit position to the next.",
+  },
+
+  addXorHeading: {
+    de: "XOR-Gatter (Exklusiv-Oder)",
+    tr: "XOR Kapısı (Dışlayan-Veya)",
+    en: "XOR Gate (Exclusive-Or)",
+  },
+  addXorIntro: {
+    de:
+      "Das XOR-Gatter gibt genau dann 1 aus, wenn die beiden Eingänge verschieden sind — daher " +
+      "der Name 'Exklusiv-Oder': entweder A oder B, aber nicht beides. Klicke A und B, um sie " +
+      "umzuschalten; die passende Zeile in der Wahrheitstafel leuchtet auf.",
+    tr:
+      "XOR kapısı, iki giriş birbirinden farklı olduğunda tam olarak 1 çıkarır — bu yüzden adına " +
+      "\"Dışlayan-Veya\" denir: ya A ya B, ama ikisi birden değil. A ve B'ye tıklayarak değiştir; " +
+      "doğruluk tablosundaki ilgili satır aydınlanır.",
+    en:
+      "The XOR gate outputs 1 when the two inputs are different — hence the name \"Exclusive-Or\": " +
+      "either A or B, but not both. Click A and B to toggle them; the matching row in the truth " +
+      "table lights up.",
+  },
+
+  addHalfHeading: {
+    de: "Halbaddierer (HA)",
+    tr: "Yarı Toplayıcı (HA)",
+    en: "Half Adder (HA)",
+  },
+  addHalfIntro: {
+    de:
+      "Ein Halbaddierer addiert zwei 1-Bit-Zahlen. Das Ergebnis hat zwei Teile: die Summe S " +
+      "(das XOR der Eingänge) und den Übertrag Cout (das AND der Eingänge). " +
+      "Warum? Schau dir 1+1 an: im Dezimalen ergibt das 2, im Binären 10 (binär) — die '1' links ist " +
+      "der Übertrag, die '0' rechts ist die Summe. Das AND liefert genau dieses Bit.",
+    tr:
+      "Yarı toplayıcı, elde girişi olmadan iki 1-bitlik sayı toplar. Sonucun iki parçası var: " +
+      "Toplam S (girişlerin XOR'u) ve Elde Cout (girişlerin AND'i). " +
+      "Neden? 1+1'e bak: ondalıkta bu 2'dir, ikili sistemde 10₂ — soldaki '1' elde, sağdaki '0' toplamdir. " +
+      "AND tam olarak bu biti verir.",
+    en:
+      "A half adder adds two 1-bit numbers. The result has two parts: the sum S (XOR of the " +
+      "inputs) and the carry-out Cout (AND of the inputs). Why? Look at 1+1: in decimal that's 2, " +
+      "in binary 10₂ — the left '1' is the carry, the right '0' is the sum. " +
+      "The AND gate delivers exactly that bit.",
+  },
+
+  addFullHeading: {
+    de: "Volladdierer (VA)",
+    tr: "Tam Toplayıcı (FA)",
+    en: "Full Adder (FA)",
+  },
+  addFullIntro: {
+    de:
+      "Ein Halbaddierer hat ein Problem: Er kann keinen eingehenden Übertrag (Cin) von einer " +
+      "vorherigen Stelle verarbeiten. Der Volladdierer löst das — er hat drei Eingänge (A, B, Cin) " +
+      "und zwei Ausgänge (S, Cout). Damit lassen sich mehrere Volladdierer hintereinander ketten, " +
+      "einer pro Bit. Klicke auf alle drei Eingänge, um die 8 Zeilen der Wahrheitstafel " +
+      "durchzugehen.",
+    tr:
+      "Yarı toplayıcının bir sorunu var: Önceki basamaktan gelen bir elde girişini (Cin) " +
+      "işleyemiyor. Tam toplayıcı bunu çözer — üç girişi (A, B, Cin) ve iki çıkışı (S, Cout) " +
+      "vardır. Böylece birden fazla tam toplayıcı arka arkaya zincirlenebilir, her bit için bir " +
+      "tane. Doğruluk tablosunun 8 satırını gezmek için üç girişe de tıkla.",
+    en:
+      "A half adder has one problem: it can't handle an incoming carry (Cin) from a previous " +
+      "bit position. The full adder solves that — it has three inputs (A, B, Cin) and two outputs " +
+      "(S, Cout). This allows multiple full adders to be chained together, one per bit. " +
+      "Click all three inputs to walk through the 8 rows of the truth table.",
+  },
+
+  add4BitHeading: {
+    de: "4-Bit-Addierer (Ripple-Carry)",
+    tr: "4-Bit Toplayıcı (Ripple-Carry)",
+    en: "4-Bit Adder (Ripple-Carry)",
+  },
+  add4BitIntro: {
+    de:
+      "Vier Volladdierer hintereinander: Der Übertrag-Ausgang (Cout) jeder Stufe wird zum " +
+      "Übertrag-Eingang (Cin) der nächsten höherwertigen Stelle. Deshalb heißt dieses Prinzip " +
+      "'Ripple-Carry' — der Übertrag rippled (rieselt) von Bit 0 bis Bit 3. " +
+      "Klicke die Bits von A und B, und beobachte, wie die Überträge C1–C4 entstehen.",
+    tr:
+      "Dört tam toplayıcı arka arkaya: Her kademenin elde çıkışı (Cout), bir sonraki daha anlamlı " +
+      "basamağın elde girişine (Cin) bağlanır. Bu yüzden bu ilkeye \"Ripple-Carry\" denir — elde, " +
+      "Bit 0'dan Bit 3'e kadar dalgalanır. " +
+      "A ve B'nin bitlerini tıkla ve C1–C4 eldelerinin nasıl oluştuğunu gözlemle.",
+    en:
+      "Four full adders in a row: the carry output (Cout) of each stage becomes the carry input " +
+      "(Cin) of the next, more-significant bit position. That's why this principle is called " +
+      "\"ripple-carry\" — the carry ripples from bit 0 through bit 3. " +
+      "Click the bits of A and B and watch how the carries C1–C4 are generated.",
+  },
+
+  addOverflow: {
+    de: "Überlauf",
+    tr: "Taşma",
+    en: "Overflow",
+  },
+
   // ---- Laufbalken tabs (Aufgabe 8) ----
   laufbalkenTabFsm: { de: "2.1.3–2.1.5 Zustandsautomat", tr: "2.1.3–2.1.5 Durum Otomatı", en: "2.1.3–2.1.5 State Machine" },
   laufbalkenTabDff: { de: "2.1.1–2.1.2 D-FF Zeitdiagramm", tr: "2.1.1–2.1.2 D-FF Zaman Diyagramı", en: "2.1.1–2.1.2 D-FF Timing Diagram" },

@@ -16,6 +16,7 @@ import { FlipFlopsPage } from "./pages/concepts/FlipFlopsPage";
 import { ZaehlerPage } from "./pages/concepts/ZaehlerPage";
 import { SchieberegisterPage } from "./pages/concepts/SchieberegisterPage";
 import { SpeicherPage } from "./pages/concepts/SpeicherPage";
+import { AddiererPage } from "./pages/concepts/AddiererPage";
 import { WaldPage } from "./pages/WaldPage";
 import { PwmPage } from "./pages/PwmPage";
 import { LaufbalkenPage } from "./pages/LaufbalkenPage";
@@ -88,6 +89,13 @@ function App() {
       title: t("memHeading", lang),
       subtitle: t("memSubtitle", lang),
       render: () => <SpeicherPage />,
+    },
+    {
+      id: "addierer",
+      number: 7,
+      title: t("addHeading", lang),
+      subtitle: t("addSubtitle", lang),
+      render: () => <AddiererPage />,
     },
   ];
 

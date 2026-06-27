@@ -1091,3 +1091,289 @@ code {
     transform-origin: top left;
   }
 }
+
+/* ── Addierer page ────────────────────────────────────────────────────────── */
+
+.adder-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--panel-border);
+}
+
+.adder-section__heading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+}
+
+.adder-section__intro {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.adder-section__table {
+  margin-top: 1rem;
+}
+
+/* Interactive bit toggle button */
+.adder-bit-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  min-width: 52px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, transform 0.08s;
+  font-family: var(--font-mono);
+}
+
+.adder-bit-btn:hover {
+  border-color: var(--accent);
+}
+
+.adder-bit-btn:active {
+  transform: scale(0.96);
+}
+
+.adder-bit-btn.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.adder-bit-btn__label {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.adder-bit-btn__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Read-only bit display */
+.adder-bit-display {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  min-width: 52px;
+  border: 2px solid var(--panel-border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+  font-family: var(--font-mono);
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.adder-bit-display.is-on {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: var(--accent);
+}
+
+.adder-bit-display__label {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.adder-bit-display__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Demo layout (XOR, HA, FA) */
+.adder-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.adder-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.adder-demo__op {
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 0 2px;
+}
+
+.adder-demo__eq {
+  font-size: 1.2rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.adder-demo__outputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-subtle, color-mix(in srgb, var(--panel-bg) 60%, var(--bg)));
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+}
+
+.adder-demo__out-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.adder-formula {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  background: none;
+  padding: 0;
+}
+
+/* 4-Bit Adder layout */
+.adder-4bit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.adder-4bit__grid {
+  display: grid;
+  grid-template-columns: 2rem repeat(4, minmax(0, 52px)) 1fr;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.adder-4bit__row-label {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.adder-4bit__row-label--A { color: var(--accent); }
+.adder-4bit__row-label--B { color: var(--accent); }
+.adder-4bit__row-label--S { color: var(--text); }
+
+.adder-4bit__col-header {
+  font-size: 0.68rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.adder-4bit__decimal {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding-left: 0.5rem;
+  white-space: nowrap;
+}
+
+/* Carry chain row */
+.adder-4bit__carry-row {
+  padding: 0.35rem 0;
+  overflow-x: auto;
+}
+
+.adder-4bit__carry-arrow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 2.4rem; /* align with bit columns */
+  flex-wrap: nowrap;
+}
+
+.adder-4bit__carry-val {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  white-space: nowrap;
+  color: var(--text-muted);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.adder-4bit__carry-val.is-on {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  border-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.adder-4bit__carry-dir {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Plus/line divider */
+.adder-4bit__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.1rem 0;
+}
+
+.adder-4bit__plus {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  width: 2rem;
+  text-align: right;
+}
+
+.adder-4bit__line {
+  flex: 1;
+  height: 1px;
+  background: var(--panel-border);
+  max-width: calc(4 * 52px + 3 * 0.4rem);
+}
+
+/* Summary */
+.adder-4bit__summary {
+  padding-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.adder-4bit__overflow {
+  color: #e06c4a;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .adder-4bit__grid {
+    grid-template-columns: 1.6rem repeat(4, minmax(0, 44px)) 1fr;
+    gap: 0.3rem;
+  }
+
+  .adder-bit-btn,
+  .adder-bit-display {
+    min-width: 40px;
+    padding: 5px 6px;
+  }
+
+  .adder-bit-btn__value,
+  .adder-bit-display__value {
+    font-size: 1.1rem;
+  }
+}
