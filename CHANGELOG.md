@@ -4,6 +4,19 @@ All notable changes to this project are documented here, newest first. Dates and
 times are in `Europe/Berlin` time (CEST, UTC+2) and match the actual commit
 timestamps in git history (`git log`).
 
+## [0.4.1] — 2026-06-27 CEST
+
+### Fixed
+- **Traffic-light exercise (Aufgabe 2) and ROM code converter (Aufgabe 5)**:
+  state Z3 (Q2Q1Q0 = 011) now correctly lights **both Red and Yellow**
+  simultaneously (German traffic-light sequence: Rot → Rot+Gelb → Grün → Gelb).
+  The previous code returned `R=false` for Z3, showing Yellow-only — which is
+  wrong. The corrected formula is `R = !Q2` (Red active for all states 0–3),
+  not the incorrect `R = !Q2 & !X`. The `ampelOutputs` function is now shared
+  between the two exercises instead of being duplicated.
+- Description text in Aufgabe 2 updated from "Gelb (1)" to "Rot+Gelb (1)" for
+  the pre-green phase (DE/TR/EN).
+
 ## [0.4.0] — 2026-06-25 00:41 CEST
 
 ### Added

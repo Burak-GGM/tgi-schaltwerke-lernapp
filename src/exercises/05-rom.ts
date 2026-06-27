@@ -1,16 +1,8 @@
 import type { ExerciseConfig } from "../engine/types";
 import type { Lang } from "../i18n/types";
-import { buildAmpelTable } from "./02-ampel";
+import { ampelOutputs, buildAmpelTable } from "./02-ampel";
 
 const codes = ["000", "001", "010", "011", "100", "101", "110", "111"];
-
-function ampelOutputs(code: string): { R: boolean; Ge: boolean; Gr: boolean } {
-  const n = parseInt(code, 2);
-  if (n <= 2) return { R: true, Ge: false, Gr: false };
-  if (n === 3) return { R: false, Ge: true, Gr: false };
-  if (n <= 6) return { R: false, Ge: false, Gr: true };
-  return { R: false, Ge: true, Gr: false };
-}
 
 const WORDS = {
   de: {

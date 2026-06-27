@@ -3,12 +3,12 @@ import type { Lang } from "../i18n/types";
 
 const codes = ["000", "001", "010", "011", "100", "101", "110", "111"];
 
-function ampelOutputs(code: string): { R: boolean; Ge: boolean; Gr: boolean } {
+export function ampelOutputs(code: string): { R: boolean; Ge: boolean; Gr: boolean } {
   const n = parseInt(code, 2);
-  if (n <= 2) return { R: true, Ge: false, Gr: false };
-  if (n === 3) return { R: false, Ge: true, Gr: false };
-  if (n <= 6) return { R: false, Ge: false, Gr: true };
-  return { R: false, Ge: true, Gr: false }; // n === 7
+  if (n <= 2) return { R: true, Ge: false, Gr: false };   // Rot
+  if (n === 3) return { R: true, Ge: true, Gr: false };   // Rot+Gelb
+  if (n <= 6) return { R: false, Ge: false, Gr: true };   // Grün
+  return { R: false, Ge: true, Gr: false };               // Gelb
 }
 
 const WORDS = {
@@ -16,7 +16,7 @@ const WORDS = {
     title: "Ampelschaltung",
     subtitle: "Minimal codierter Zähler, CTR DIV8 (S. 97)",
     description:
-      "Eine Verkehrsampel durchläuft pro Periode 8 Takte: Rot (3 Takte) → Gelb (1) → Grün (3) → " +
+      "Eine Verkehrsampel durchläuft pro Periode 8 Takte: Rot (3 Takte) → Rot+Gelb (1) → Grün (3) → " +
       "Gelb (1) → von vorn. 8 Zustände lassen sich minimal mit 3 D-Flip-Flops codieren (CTR DIV8). " +
       "Drücke Takt oder Play, um den Zähler laufen zu lassen, und beobachte, wie Q2Q1Q0 über das " +
       "Ausgangsschaltnetz auf Rot/Gelb/Grün abgebildet wird.",
@@ -27,7 +27,7 @@ const WORDS = {
     title: "Trafik Lambası Devresi",
     subtitle: "Minimal kodlanmış sayaç, CTR DIV8 (S. 97)",
     description:
-      "Bir trafik lambası bir periyotta 8 vuruş geçirir: Kırmızı (3 vuruş) → Sarı (1) → Yeşil (3) → " +
+      "Bir trafik lambası bir periyotta 8 vuruş geçirir: Kırmızı (3 vuruş) → Kırmızı+Sarı (1) → Yeşil (3) → " +
       "Sarı (1) → baştan. 8 durum, minimal olarak 3 D flip-flop ile kodlanabilir (CTR DIV8). " +
       "Sayacı çalıştırmak için Vuruş veya Play'e bas ve Q2Q1Q0'nın çıkış devresi üzerinden " +
       "Kırmızı/Sarı/Yeşil'e nasıl eşlendiğini gözlemle.",
@@ -38,7 +38,7 @@ const WORDS = {
     title: "Traffic Light Circuit",
     subtitle: "Minimally coded counter, CTR DIV8 (p. 97)",
     description:
-      "A traffic light goes through 8 clock ticks per period: Red (3 ticks) → Yellow (1) → " +
+      "A traffic light goes through 8 clock ticks per period: Red (3 ticks) → Red+Yellow (1) → " +
       "Green (3) → Yellow (1) → back to the start. 8 states can be minimally coded with 3 D " +
       "flip-flops (CTR DIV8). Press Clock or Play to run the counter, and watch how Q2Q1Q0 maps " +
       "to Red/Yellow/Green through the output network.",
@@ -90,6 +90,6 @@ export function buildAmpel(lang: Lang): ExerciseConfig {
     })),
     tables: [buildAmpelTable(lang)],
     outputRenderer: "traffic-light",
-    formulas: ["X = Q1 & Q0", "Ge = Q1 & Q0", "R = !Q2 & !X", "Gr = Q2 & !X"],
+    formulas: ["X = Q1 & Q0", "Ge = X", "R = !Q2", "Gr = Q2 & !X"],
   };
 }
