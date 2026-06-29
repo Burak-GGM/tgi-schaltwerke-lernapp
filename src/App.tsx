@@ -21,6 +21,7 @@ import { WaldPage } from "./pages/WaldPage";
 import { PwmPage } from "./pages/PwmPage";
 import { LaufbalkenPage } from "./pages/LaufbalkenPage";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { DisclaimerModal } from "./components/DisclaimerModal";
 import { t, useLang, type Lang } from "./i18n";
 
 const PWM_TITLE: Record<Lang, string> = {
@@ -136,6 +137,8 @@ function App() {
   };
 
   return (
+    <>
+    <DisclaimerModal />
     <div className="app">
       <div className={`app__drawer ${navOpen ? "is-open" : ""}`}>
         <div className="app__drawer-inner">
@@ -194,6 +197,7 @@ function App() {
         </main>
       </div>
     </div>
+    </>
   );
 }
 

@@ -4,6 +4,17 @@ All notable changes to this project are documented here, newest first. Dates and
 times are in `Europe/Berlin` time (CEST, UTC+2) and match the actual commit
 timestamps in git history (`git log`).
 
+## [0.5.1] — 2026-06-27 CEST
+
+### Added
+- **Disclaimer popup** shown on first visit (stored in `localStorage`, never
+  shown again after clicking through). Three paragraphs: the site was built by
+  a student for personal exam prep; information may be wrong and not everything
+  here will be in the exam; use at your own risk and don't blame me if
+  something goes wrong. Available in DE/TR/EN, respects the current language
+  selection. Modal cannot be dismissed by clicking the backdrop — you have to
+  click the button.
+
 ## [0.5.0] — 2026-06-27 CEST
 
 ### Added

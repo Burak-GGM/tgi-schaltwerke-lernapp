@@ -503,6 +503,33 @@ const dict = {
   memOutputTristate: { de: "Z (hochohmig / Tri-State)", tr: "Z (yüksek empedans / Tri-State)", en: "Z (high-impedance / tri-state)" },
   memArrayHeading: { de: "Speicherarray", tr: "Bellek Dizisi", en: "Memory Array" },
 
+  // ---- Disclaimer modal ----
+  disclaimerTitle: {
+    de: "Kurze Ansage, bevor du anfängst",
+    tr: "Baslamadan once kisa bir uyari",
+    en: "Quick heads-up before you start",
+  },
+  disclaimerP1: {
+    de: "Diese Seite wurde von mir (Burak) fur meine eigene Klausurvorbereitung gebaut — nicht von einem Lehrer, nicht vom Schulbuch-Verlag, nicht von irgendjemandem mit Verantwortung.",
+    tr: "Bu siteyi ben (Burak) kendi sinav hazirligim icin yaptim — bir ogretmen degil, ders kitabi yayinevi degil, sorumlulugu olan herhangi biri degil.",
+    en: "This site was built by me (Burak) for my own exam prep — not by a teacher, not by a textbook publisher, not by anyone responsible for anything.",
+  },
+  disclaimerP2: {
+    de: "Informationen konnten falsch oder unvollstandig sein. Nicht alles hier wird in der Klausur vorkommen. Benutze die Seite als Erganzung zum Unterricht — nicht als Ersatz.",
+    tr: "Bilgiler yanlis veya eksik olabilir. Buradaki her sey sinava girmeyebilir. Siteyi ders materyalinin tamamlayicisi olarak kullan — yerini almasin.",
+    en: "Information may be wrong or incomplete. Not everything here will show up in your exam. Use this site as a supplement to class material — not as a replacement.",
+  },
+  disclaimerP3: {
+    de: "Kurz gesagt: Benutz es gerne, aber auf eigene Verantwortung. Wenn danach in der Klausur etwas schiefgeht — komm nicht zu mir.",
+    tr: "Kisacasi: Kullanmaktan cekinme, ama kendi sorumluluqunda. Sinav sonrasinda bir sey ters giderse — bana gelme.",
+    en: "Bottom line: use it freely, but at your own risk. If something goes wrong in the exam afterwards — don't come to me.",
+  },
+  disclaimerAccept: {
+    de: "Verstanden, weiter",
+    tr: "Anladim, devam",
+    en: "Got it, let's go",
+  },
+
   // ---- Addierer (Grundlagen) ----
   addHeading: { de: "Addierer", tr: "Toplayıcı", en: "Adders" },
   addSubtitle: {
